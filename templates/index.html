@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Notes App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="app.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Secure Notes</h1>
+        <div class="auth-form">
+            <h2>Login</h2>
+            <form id="loginForm" action="/" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="registerLink">Register here</a></p>
+        </div>
+        
+        <div class="register-form hidden">
+            <h2>Register</h2>
+            <form id="registerForm" action="/register" method="post">
+                <label for="newUsername">Username:</label>
+                <input type="text" id="newUsername" name="newUsername" required>
+                
+                <label for="newPassword">Password:</label>
+                <input type="password" id="newPassword" name="newPassword" required>
+                
+                <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" id="loginLink">Login here</a></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.querySelector('.auth-form').classList.add('hidden');
+            document.querySelector('.register-form').classList.remove('hidden');
+        });
+
+        document.getElementById('loginLink').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.querySelector('.register-form').classList.add('hidden');
+            document.querySelector('.auth-form').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
